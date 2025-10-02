@@ -1,0 +1,2 @@
+$cutoff = (get-date).addminutes(-10).ToFileTime()
+ls HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\ | ? {$_.getvalue('LastNotificationAddedTime') -gt $cutoff } | % { ($_.name -split '\\')[-1].TrimEnd('}') } | % { [Windows.UI.Notifications.ToastNotificationManager]::History.GetHistory($_) | % {echo "Got a notif:: $($_.content.innertext)"} }

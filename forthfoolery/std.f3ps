@@ -1,0 +1,44 @@
+code . _write($stack.pop()) endcode
+code dup $stack.push($stack.peek()) endcode
+
+code :
+	$compiling = $true
+	$new_word = _word
+	defcode -word $new_word -definition { docol }
+endcode
+
+code immediate
+	$dictionary[-1].flags = $dictionary[-1].flags -bor $flag_immediate
+endcode
+
+code ;
+	$compiling = $false
+endcode immediate
+
+code [
+	$compiling = $false
+endcode immediate
+
+code ]
+	$compiling = $true
+endcode
+
+code bye
+	exit
+endcode
+
+code if
+	if (($stack.pop()) -ne 0) {
+		
+		for () {
+			$word = _word
+			if ($word -ne 'then') {
+				$dictionary[_find $word].code.invoke()
+			} else {
+				break
+			}
+		}
+	} else {
+		while ((_word) -ne 'then') {}
+	}
+endcode
