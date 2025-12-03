@@ -5,7 +5,7 @@ Every folder has its own README that goes into further details.
 Attempts at writing Forth programming language in PowerShell.
 
 ## ilin
-Text notes processing experiments.
+Text notes processing experiments, PowerShell.
 
 ## ps_bits
 Various pieces of PowerShell code.
@@ -13,3 +13,5 @@ Various pieces of PowerShell code.
 ## py_avatar
 I asked several LLMs to write me webcam-to-avatar realtime app (like a mask or something), ended up writing it myself.
 
+## notes.c
+A small notifier to test how to do things in C.
